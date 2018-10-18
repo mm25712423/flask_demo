@@ -1,0 +1,15 @@
+            gpu_chart = chart({{ ads['label'] | safe }});
+        {% for k, v in ads['values'].items() %}
+            gpu_chart.data.datasets.push({
+                label: "{{ k | safe }}",
+                data: {{ v | safe }},
+                backgroundColor: 'transparent',
+                borderColor: 'rgba(220,53,69,0.75)',
+                borderWidth: 3,
+                pointStyle: 'circle',
+                pointRadius: 5,
+                pointBorderColor: 'transparent',
+                pointBackgroundColor: 'rgba(220,53,69,0.75)'
+            });
+        {% endfor %}
+        gpu_chart.update();

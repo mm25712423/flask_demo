@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}Face Classify{% endblock title %}
+</head>
+<body>
+{% block content %}
+    <!--Row1-->
+    <div class="row" style="height:200px;">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-four">
+                        <div class="stat-icon dib">
+                            <i class="ti-desktop text-muted"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-heading">CPU information</div>
+                                {% if cpu %}
+                                    <div class="stat-text">{{ ('logicial: %(logicial)d')|format(logicial=cpu['logicial']) }}</div>
+                                    <div class="stat-text">{{ ('core: %(core)d')|format(core=cpu['core']) }}</div>
+                                    <div class="stat-text">{{ ('usage: %(usage).1f %%')|format(usage=cpu['usage']) }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End of Row1-->
+
+    <!--Row2-->
+
+    <div class="row" style="height:200px;">
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-four">
+                        <div class="stat-icon dib">
+                            <i class="ti-server text-muted"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-heading">Docker information</div>
+                                {% if dock %}
+                                    <div class="stat-text">{{ ('total_num: %(total_num)d ')|format(total_num=dock['total_container']) }}</div>
+                                    <div class="stat-text">{{ ('run_num: %(run_num)d ')|format(run_num=dock['run_container']) }}</div>
+                                    <div class="stat-text">{{ ('stop_num: %(stop_num)d ')|format(stop_num=dock['stop_container']) }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    <!-- End of Row2-->
+
+{% endblock content %}
+{% block script %}
+    <script src="{{ url_for('static', filename='assets/js/vendor/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+    <!--  Chart js -->
+    <script src="{{ url_for('static', filename='assets/js/lib/chart-js/Chart.bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/widgets.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/lib/chart-js/chartjs-init.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='assets/js/lib/peitychart/jquery.peity.min.js') }}"></script>
+    <!-- scripit init-->
+    <script src="{{ url_for('static', filename='assets/js/lib/peitychart/peitychart.init.js') }}"></script>
+    <!-- scripit init-->
+
+{% endblock script %}
+
+</body>
+</html>
